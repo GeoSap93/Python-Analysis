@@ -1,0 +1,55 @@
+#  Import library
+import csv
+from calendar import month
+
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+from Two_different_Solutions import expenditure
+
+
+def read_data():  # 1. Read the data from the spreadsheet
+
+    data = []  # Initialize an empty list to store the data
+    months = []
+    with open("sales.csv", "r") as sales_csv:
+        spreadsheet = csv.DictReader(sales_csv)
+        for row in spreadsheet:
+            data.append(row)
+            print(dict(row))
+            months.append(row)
+    return data, months
+
+
+#  2. Collect all the sales from each month into a single list
+def total_sales():
+    data = read_data()
+
+    sales_in_total = []  # Initialize an empty list to store the sales
+    for row in data:
+        sale = int(row["sales"])
+        sales_in_total.append(sale)
+
+    total = sum(sales_in_total)
+
+    return total, sales_in_total
+
+
+total, sales = total_sales()
+print("The total sales are:{}".format(total))
+print("The sales are:{}".format(sales))
+
+#  Visualization of the sales for each month
+plt.figure(figsize=(10, 6))
+sns.barplot(x=month, y=sales)
+plt.title("The Sales of 2018 per month")
+plt.xlabel("Months")
+plt.ylabel("Sales")
+plt.show()
+#  Visualization of the expenditure for each month
+plt.figure(figsize=(10, 6))
+sns.barplot(x=month, y=expenditure)
+plt.title("The Expenditure of 2018 per month")
+plt.xlabel("Months")
+plt.ylabel("Expenditure")
+plt.show()
