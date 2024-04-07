@@ -1,6 +1,6 @@
 # Python- Spreadsheet Analysis 
 
-During my "Python & Apps" project I used Python programming language to analyse the database, regarding a company's sales and expenditure.
+During my "Python & Apps" project I used Python programming language to analyse a Kaggle database, regarding a company's sales and expenditure.
 
 As part of the project I created code for the following tasks:
 1. Read the data from the csv file
